@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { AeropuertosEntity } from '../aeropuerto/aeropuertos.entity';
 import { Repository } from 'typeorm';
 import { AerolineasEntity } from '../aerolinea/aerolineas.entity';
+import { faker } from '@faker-js/faker';
 
 @Injectable()
 export class AeropuertoWithAerolineaService {
@@ -31,13 +32,15 @@ export class AeropuertoWithAerolineaService {
     if (aeropuertosEntity.codigo.length >= 3) {
       throw new Error('El codigo de la aerolineas no puede ser mayor a tees');
     }
-
+    console.log('FUE');
     await this.aeropuertoRepository.save(aeropuertosEntity);
     aerolineasEntity.aeropuertos.push(aeropuertosEntity);
     return this.aerolineasEntity.save(aerolineasEntity);
   }
 
-  async findAirportsFromAirline(id: string): Promise<Array<AeropuertosEntity>> {
+  async findAirportsFromAirlines(
+    id: string,
+  ): Promise<Array<AeropuertosEntity>> {
     const ae = await this.aerolineasEntity.findOne({
       where: { id },
       relations: ['aeropuertos'],
@@ -46,7 +49,12 @@ export class AeropuertoWithAerolineaService {
     if (!ae) {
       throw new Error('No existe ese id');
     }
-    return ae.aeropuertos;
+
+    const items = [];
+    for (let i = 0; i < ae.aeropuertos.length; i++) {
+      items.push(ae.aeropuertos[i]);
+    }
+    return items;
   }
 
   async findAirportFromAirline(id: string): Promise<AeropuertosEntity> {
@@ -54,8 +62,8 @@ export class AeropuertoWithAerolineaService {
       where: { id },
       relations: ['aeropuertos'],
     });
-
-    if (!ae || ae.aeropuertos || ae.aeropuertos.length == 0) {
+    console.log('FUE AS', ae);
+    if (!ae) {
       throw new Error(
         'No hay relacion con la aerolinea o no existe aeropuertos',
       );

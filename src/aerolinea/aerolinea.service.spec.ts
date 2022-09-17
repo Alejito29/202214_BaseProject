@@ -32,7 +32,7 @@ describe('AerolineaService', () => {
       const dto: AerolineasEntity = await repository.save({
         nombre: faker.company.name(),
         descripcion: faker.lorem.sentence(),
-        fecha: new Date(),
+        fecha: '2022-09-22T14:50:21.817Z',
         página: 'ABC',
       });
       aerolineas.push(dto);
@@ -62,7 +62,7 @@ describe('AerolineaService', () => {
   it('check the create method', async () => {
     const itemTemporal: AerolineasEntity = aerolineas[0];
     itemTemporal.nombre = 'TEST';
-    itemTemporal.fecha = new Date('2022-09-10T14:50:21.817Z');
+    itemTemporal.fecha = '2022-09-14T14:50:21.817Z';
     const aerolineasDTO = await service.create(itemTemporal);
     expect(aerolineasDTO).not.toBeNull();
     expect(aerolineasDTO.nombre).toEqual('TEST');
@@ -72,23 +72,27 @@ describe('AerolineaService', () => {
   it('check the create method when the date is major', async () => {
     const itemTemporal: AerolineasEntity = aerolineas[0];
     itemTemporal.nombre = 'TEST';
-    itemTemporal.fecha = new Date('2022-09-22T14:50:21.817Z');
-    await expect(service.create(itemTemporal)).rejects.toThrow(Error);
+    itemTemporal.fecha = '2022-09-22T14:50:21.817Z';
+    const aero = await service.create(itemTemporal);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(aero.message).toEqual('Revise la fecha de fundacion por favor');
   });
 
   it('check the update method when the date is major', async () => {
     const itemTemporal: AerolineasEntity = aerolineas[0];
     itemTemporal.nombre = 'TEST';
-    itemTemporal.fecha = new Date('2022-09-22T14:50:21.817Z');
-    await expect(service.update(itemTemporal.id, itemTemporal)).rejects.toThrow(
-      Error,
-    );
+    itemTemporal.fecha = '2022-09-22T14:50:21.817Z';
+    const aero = await service.update(itemTemporal.id, itemTemporal);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    expect(aero.message).toEqual('Revise la fecha de fundacion por favor');
   });
 
   it('check the update method', async () => {
     const itemTemporal: AerolineasEntity = aerolineas[0];
     itemTemporal.nombre = 'TEST';
-    itemTemporal.fecha = new Date('2022-09-09T14:50:21.817Z');
+    itemTemporal.fecha = itemTemporal.fecha = '2022-09-01T14:50:21.817Z';
     const aerolineasDTO = await service.update(itemTemporal.id, itemTemporal);
     expect(aerolineasDTO).not.toBeNull();
     expect(aerolineasDTO.nombre).toEqual('TEST');
@@ -98,7 +102,7 @@ describe('AerolineaService', () => {
   it('check the delete method', async () => {
     const itemTemporal: AerolineasEntity = aerolineas[0];
     itemTemporal.nombre = 'TEST';
-    itemTemporal.fecha = new Date('2022-09-09T14:50:21.817Z');
+    itemTemporal.fecha = itemTemporal.fecha = '2022-09-22T14:50:21.817Z';
     await service.delete(itemTemporal.id);
     const aerolineasDTO = await service.findAll();
     expect(aerolineasDTO).not.toBeNull();

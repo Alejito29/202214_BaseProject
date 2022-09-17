@@ -7,13 +7,14 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { AerolineaService } from './aerolinea.service';
 import { AerolineasEntity } from './aerolineas.entity';
 import { plainToInstance } from 'class-transformer';
 
 @Controller('airlines')
-export class PaisController {
+export class AerolineaController {
   constructor(private readonly aerolineaService: AerolineaService) {}
 
   @Get()
@@ -22,7 +23,7 @@ export class PaisController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Query('id') id: string) {
     return await this.aerolineaService.findOne(id);
   }
   @Post()
@@ -36,7 +37,7 @@ export class PaisController {
 
   @Put(':id')
   async update(
-    @Param('id') id: string,
+    @Query('id') id: string,
     @Body() aerolineasEntity: AerolineasEntity,
   ) {
     const aerolinea: AerolineasEntity = plainToInstance(
@@ -48,7 +49,7 @@ export class PaisController {
 
   @Delete(':id')
   @HttpCode(204)
-  async delete(@Param('id') id: string) {
+  async delete(@Query('id') id: string) {
     return await this.aerolineaService.delete(id);
   }
 }

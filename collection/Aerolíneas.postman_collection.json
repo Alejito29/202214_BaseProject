@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "bcbd03fc-8df6-48fe-97e1-a77d5e8d3280",
+		"name": "Aerolíneas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5957463"
+	},
+	"item": [
+		{
+			"name": "Crear una aerolínea válida.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"A\",\r\n  \"descripcion\": \"A\",\r\n  \"fecha\": \"2022-09-10T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2022-09-10T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "d0cfdc1e-8808-4d5f-b335-837e736728b9",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear una aerolínea inválida.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "d0cfdc1e-8808-4d5f-b335-837e736728b9",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las aerolíneas.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "d0cfdc1e-8808-4d5f-b335-837e736728b9",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una aerolínea por ID.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "id",
+						"value": "79f3b33e-5fc2-420c-94fb-ede94be4885f",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/id/?id=7a3eb077-d5e9-44ed-a4da-4b7868ac7ba9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7a3eb077-d5e9-44ed-a4da-4b7868ac7ba9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una aerolínea por un ID que no existe.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/id/?id=7a3eb077-d5e9-44ed-a4da-4b7868ac7ba9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7a3eb077-d5e9-44ed-a4da-4b7868ac7ba9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una aerolínea.",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"C\",\r\n  \"descripcion\": \"C\",\r\n  \"fecha\": \"2022-09-10T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2022-09-10T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/id/?id=7a3eb077-d5e9-44ed-a4da-4b7868ac7ba9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "7a3eb077-d5e9-44ed-a4da-4b7868ac7ba9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar una aerolínea con un ID que no existe.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/id/?id=d0cfdc1e-8808-4d5f-b335-837e736728b9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "d0cfdc1e-8808-4d5f-b335-837e736728b9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una aerolínea por su ID.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/id/?id=ca4b7669-b10f-4f7e-8a42-2e219bc22e2e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "ca4b7669-b10f-4f7e-8a42-2e219bc22e2e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar una aerolínea con un ID que no existe.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airlines/id/?id=as",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airlines",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "as"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

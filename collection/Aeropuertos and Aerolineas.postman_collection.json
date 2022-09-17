@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "e10aa1d0-2b50-4c62-affc-2fdf75ff7c5b",
+		"name": "Aeropuertos and Aerolineas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5957463"
+	},
+	"item": [
+		{
+			"name": "Asociar un aeropuerto a una aerolínea.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"nombre\": \"AAAAA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2022-09-10T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/AeropuertoWithAerolineaController/?id=e7d67b30-7b48-4a7c-9fac-8ed877675e61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"AeropuertoWithAerolineaController",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "e7d67b30-7b48-4a7c-9fac-8ed877675e61"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar un aeropuerto que no existe a una aerolínea.",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"CARTAGENA\",\r\n  \"codigo\": \"RE\",\r\n  \"pais\": 57,\r\n  \"ciudad\": \"CART\",\r\n  \"aerolineas\": [\r\n    {\r\n      \"nombre\": \"PRUEBA\",\r\n      \"descripcion\": \"PRUEBA\",\r\n      \"fecha\": \"2022-09-10T14:50:21.817Z\",\r\n      \"página\": \"TEST\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/AeropuertoWithAerolineaController/?id=ASSAS-8808-4d5f-b335AAAA837e736728b9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"AeropuertoWithAerolineaController",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "ASSAS-8808-4d5f-b335AAAA837e736728b9"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los aeropuertos que cubre una aerolínea.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/AeropuertoWithAerolineaController/findAirportsFromAirline/?id=e7d67b30-7b48-4a7c-9fac-8ed877675e61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"AeropuertoWithAerolineaController",
+						"findAirportsFromAirline",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "e7d67b30-7b48-4a7c-9fac-8ed877675e61"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un aeropuerto asociado a una aerolínea.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "id",
+						"value": "79f3b33e-5fc2-420c-94fb-ede94be4885f",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/AeropuertoWithAerolineaController/id/?id=e7d67b30-7b48-4a7c-9fac-8ed877675e61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"AeropuertoWithAerolineaController",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "e7d67b30-7b48-4a7c-9fac-8ed877675e61"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un aeropuerto que no esté asociado a una aerolínea.",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/AeropuertoWithAerolineaController/id/?id=as",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"AeropuertoWithAerolineaController",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "as"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ctualizar los aeropuertos que están asociados a una aerolínea.",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n      \"nombre\": \"bbbbb\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2022-09-10T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/AeropuertoWithAerolineaController/id/?id=e7d67b30-7b48-4a7c-9fac-8ed877675e61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"AeropuertoWithAerolineaController",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "e7d67b30-7b48-4a7c-9fac-8ed877675e61"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar los aeropuertos asociados a una aerolínea, con un aeropuerto inexistente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": \"f89035f0-e8fa-4317-bd09-SDSD\",\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/AeropuertoWithAerolineaController/id/?id=AWSSAAS",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"AeropuertoWithAerolineaController",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "AWSSAAS"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un aeropuerto previamente asociado a una aerolínea.",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/AeropuertoWithAerolineaController/id/?id=e7d67b30-7b48-4a7c-9fac-8ed877675e61",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"AeropuertoWithAerolineaController",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "e7d67b30-7b48-4a7c-9fac-8ed877675e61"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar un aeropuerto que no estaba previamente asociado a una aerolínea",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nombre\": \"PRUEBA\",\r\n  \"descripcion\": \"PRUEBA\",\r\n  \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n  \"página\": \"TEST\",\r\n  \"aeropuertos\": [\r\n    {\r\n      \"nombre\": \"CARTAGENA\",\r\n      \"codigo\": \"TE\",\r\n      \"pais\": 57,\r\n      \"ciudad\": \"CART\",\r\n      \"aerolineas\": [\r\n        {\r\n          \"nombre\": \"PRUEBA\",\r\n          \"descripcion\": \"PRUEBA\",\r\n          \"fecha\": \"2023-09-23T14:50:21.817Z\",\r\n          \"página\": \"TEST\"\r\n        }\r\n      ]\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/airports/id/?id=as",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"airports",
+						"id",
+						""
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "as"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

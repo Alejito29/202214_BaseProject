@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from '@nestjs/common';
 import { AeropuertosEntity } from './aeropuertos.entity';
 import { plainToInstance } from 'class-transformer';
@@ -22,7 +23,7 @@ export class AeropuertoController {
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
+  async findOne(@Query('id') id: string) {
     return await this.aeropuertosEntity.findOne(id);
   }
 
@@ -36,7 +37,7 @@ export class AeropuertoController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() aeropuerto: AeropuertosEntity) {
+  async update(@Query('id') id: string, @Body() aeropuerto: AeropuertosEntity) {
     const aeropuertos: AeropuertosEntity = plainToInstance(
       AeropuertosEntity,
       aeropuerto,
@@ -46,7 +47,7 @@ export class AeropuertoController {
 
   @Delete(':id')
   @HttpCode(204)
-  async delete(@Param('id') id: string) {
+  async delete(@Query('id') id: string) {
     return await this.aeropuertosEntity.delete(id);
   }
 }

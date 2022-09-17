@@ -2,6 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { AerolineasEntity } from './aerolineas.entity';
+import {
+  BusinessError,
+  BusinessLogicException,
+} from '../shared/errors/business-errors';
 
 @Injectable()
 export class AerolineaService {
@@ -17,18 +21,28 @@ export class AerolineaService {
   }
 
   async findOne(id: string): Promise<AerolineasEntity> {
-    const cultura: AerolineasEntity =
+    const aerolinea: AerolineasEntity =
       await this.aerolineaEntityEntityRepository.findOne({
         where: { id },
         relations: ['aeropuertos'],
       });
-    return cultura;
+
+    if (!aerolinea) {
+      return new BusinessLogicException(
+        'El id ingresado no existe',
+        BusinessError.PRECONDITION_FAILED,
+      );
+    }
+    return aerolinea;
   }
 
   async create(aerolineasEntity: AerolineasEntity): Promise<AerolineasEntity> {
     const systemDate = new Date();
-    if (aerolineasEntity.fecha > systemDate) {
-      throw new Error('Revise la fecha de fundacion por favor');
+    if (new Date(aerolineasEntity.fecha).getTime() > systemDate.getTime()) {
+      return new BusinessLogicException(
+        'Revise la fecha de fundacion por favor',
+        BusinessError.PRECONDITION_FAILED,
+      );
     }
     return await this.aerolineaEntityEntityRepository.save(aerolineasEntity);
   }
@@ -38,8 +52,11 @@ export class AerolineaService {
     aerolinea: AerolineasEntity,
   ): Promise<AerolineasEntity> {
     const systemDate = new Date();
-    if (aerolinea.fecha > systemDate) {
-      throw new Error('Revise la fecha de fundacion por favor');
+    if (new Date(aerolinea.fecha).getTime() > systemDate.getTime()) {
+      return new BusinessLogicException(
+        'Revise la fecha de fundacion por favor',
+        BusinessError.PRECONDITION_FAILED,
+      );
     }
     const persistedAerolineaEntity: AerolineasEntity =
       await this.aerolineaEntityEntityRepository.findOne({ where: { id } });
@@ -49,6 +66,10 @@ export class AerolineaService {
   }
 
   async delete(id: string) {
+    const aer = await this.aerolineaEntityEntityRepository.find({
+      relations: ['aeropuertos'],
+    });
+
     const aerolinea: AerolineasEntity =
       await this.aerolineaEntityEntityRepository.findOne({ where: { id } });
     await this.aerolineaEntityEntityRepository.remove(aerolinea);

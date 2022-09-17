@@ -72,7 +72,7 @@ describe('AeropuertoWithAerolineaService', () => {
       const it = new AerolineasEntity();
       it.nombre = faker.company.name();
       it.descripcion = faker.lorem.sentence();
-      it.fecha = new Date();
+      it.fecha = '2022-09-22T14:50:21.817Z';
       it.página = faker.lorem.sentence();
       aerolineas.push(it);
     }
@@ -115,7 +115,7 @@ describe('AeropuertoWithAerolineaService', () => {
   });
 
   it('check the findAirportsFromAirline method', async () => {
-    const aero = await service.findAirportsFromAirline(aerolineas[0].id);
+    const aero = await service.findAirportsFromAirlines(aerolineas[0].id);
     expect(aero[0].nombre).toEqual(aeropuertos[0].nombre);
   });
 
