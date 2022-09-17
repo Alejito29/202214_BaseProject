@@ -28,6 +28,10 @@ export class AeropuertoWithAerolineaService {
       throw new Error('No existe ese id');
     }
 
+    if (aeropuertosEntity.codigo.length >= 3) {
+      throw new Error('El codigo de la aerolineas no puede ser mayor a tees');
+    }
+
     await this.aeropuertoRepository.save(aeropuertosEntity);
     aerolineasEntity.aeropuertos.push(aeropuertosEntity);
     return this.aerolineasEntity.save(aerolineasEntity);
@@ -72,6 +76,12 @@ export class AeropuertoWithAerolineaService {
 
     if (!aerolineasEntity) {
       throw new Error('No existe ese id');
+    }
+
+    for (let i = 0; i < aeropuertos.length; i++) {
+      if (aeropuertos[i].codigo.length >= 3) {
+        throw new Error('El codigo de la aerolineas no puede ser mayor a tees');
+      }
     }
 
     for (let i = 0; i < aeropuertos.length; i++) {

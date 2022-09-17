@@ -119,11 +119,6 @@ describe('AeropuertoWithAerolineaService', () => {
     expect(aero[0].nombre).toEqual(aeropuertos[0].nombre);
   });
 
-  it('check the findAirportsFromAirline method', async () => {
-    const aero = await service.findAirportsFromAirline(aerolineas[0].id);
-    expect(aero[0].nombre).toEqual(aeropuertos[0].nombre);
-  });
-
   it('check the updateAirportsFromAirline method', async () => {
     const allAerolineas = await aerolineaService.findAll();
     expect(allAerolineas[0].aeropuertos.length).toEqual(1);
